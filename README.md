@@ -1,2 +1,2 @@
 # fh-mbaas-service
-Service for OpenShift target
+Feedhenry service to support deployed Apps in an MBaaS e.g. OpenShift
