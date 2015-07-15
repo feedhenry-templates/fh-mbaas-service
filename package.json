@@ -1,6 +1,6 @@
 {
-  "name": "fh-app",
-  "version": "0.2.0",
+  "name": "fh-mbaas-service",
+  "version": "0.2.1",
   "dependencies": {
     "body-parser": "~1.0.2",
     "bunyan": "~1.4.0",
@@ -8,7 +8,7 @@
     "express": "~4.0.0",
     "fh-forms": "~1.0.0",
     "fh-mbaas-api": "^5.0.0",
-    "fh-mbaas-middleware": "^1.0.6-24",
+    "fh-mbaas-middleware": "^1.0.7-25",
     "mongodb-uri": "^0.9.7",
     "request": "~2.40.0",
     "underscore": "^1.6.0"
