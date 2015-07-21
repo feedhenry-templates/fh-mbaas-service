@@ -36,9 +36,6 @@ app.use('/mbaas', mbaasExpress.mbaas);
 // allow serving of static files from the public directory
 app.use(express.static(__dirname + '/public'));
 
-// Note: important that this is added just before your own Routes
-app.use(mbaasExpress.fhmiddleware());
-
 var mongoUrl;
 
 // some fall back options
@@ -87,6 +84,9 @@ fhmbaasMiddleware.init(jsonConfig, function (err) {
   app.use(bodyParser.json());
   app.use('/api/mbaas', require('./lib/routes/api.js'));
   app.use('/api/app', require('./lib/routes/app.js'));
+  // Note: moved to allow authorizatiobn to be passed for above mappings
+  app.use(mbaasExpress.fhmiddleware());
+
 
   // Important that this is last!
   app.use(mbaasExpress.errorHandler());
