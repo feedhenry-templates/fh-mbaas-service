@@ -65,6 +65,8 @@ var jsonConfig = {
   mongoUrl: mongoUrl,
   mongo: {
     name: 'fh-mbaas-testing',
+    host: parsedMongoUrl.hosts[0].host,
+    port: parsedMongoUrl.hosts[0].port,
     admin_auth: {
       user: parsedMongoUrl.username,
       pass: parsedMongoUrl.password
