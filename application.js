@@ -7,6 +7,7 @@ var util = require('util');
 var bodyParser = require('body-parser');
 var bunyan = require('bunyan');
 var mongoUri = require('mongodb-uri');
+var multer = require('multer');
 
 var log = bunyan.createLogger({
   name: 'fh-mbaas-service',
@@ -56,7 +57,7 @@ else {
 var parsedMongoUrl = mongoUri.parse(mongoUrl);
 if (!parsedMongoUrl.database) {
   mongoUrl = mongoUrl + "admin";
-  parsedMongourl = mongoUri.parse(mongoUrl);
+  parsedMongoUrl = mongoUri.parse(mongoUrl);
 }
 
 log.info('parsedMongoUrl', parsedMongoUrl);
@@ -84,6 +85,7 @@ fhmbaasMiddleware.init(jsonConfig, function (err) {
   }
 
   app.use(bodyParser.json());
+  app.user(multer());
   app.use('/api/mbaas', require('./lib/routes/api.js'));
   app.use('/api/app', require('./lib/routes/app.js'));
   // Note: moved to allow authorizatiobn to be passed for above mappings
