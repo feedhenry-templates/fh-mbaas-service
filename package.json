@@ -10,6 +10,7 @@
     "fh-mbaas-api": "^5.0.0",
     "fh-mbaas-middleware": "^1.0.7-25",
     "mongodb-uri": "^0.9.7",
+    "multer": "0.1.8",
     "request": "~2.40.0",
     "underscore": "^1.6.0"
   },
