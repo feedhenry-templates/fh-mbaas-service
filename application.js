@@ -7,7 +7,7 @@ var util = require('util');
 var bodyParser = require('body-parser');
 var bunyan = require('bunyan');
 var mongoUri = require('mongodb-uri');
-var malter = require('multer');
+var multer = require('multer');
 
 var log = bunyan.createLogger({
   name: 'fh-mbaas-service',
