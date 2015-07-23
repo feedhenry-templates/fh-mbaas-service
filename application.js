@@ -85,7 +85,7 @@ fhmbaasMiddleware.init(jsonConfig, function (err) {
   }
 
   app.use(bodyParser.json());
-  app.user(multer());
+  app.use(multer());
   app.use('/api/mbaas', require('./lib/routes/api.js'));
   app.use('/api/app', require('./lib/routes/app.js'));
   // Note: moved to allow authorizatiobn to be passed for above mappings
