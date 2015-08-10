@@ -6,7 +6,7 @@
     "bunyan": "~1.4.0",
     "cors": "~2.2.0",
     "express": "^4.4.5",
-    "fh-forms": "~1.0.0",
+    "fh-forms": "^1.0.2",
     "fh-mbaas-api": "^5.0.0",
     "fh-mbaas-middleware": "^1.0.7-25",
     "mongodb-uri": "^0.9.7",
