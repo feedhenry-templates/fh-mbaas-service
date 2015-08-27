@@ -31,9 +31,6 @@ app.use(cors());
 // Note: the order which we add middleware to Express here is important!
 app.use('/sys',  mbaasExpress.sys(securableEndpoints));
 
-// TODO: is this needed?
-app.use('/mbaas', mbaasExpress.mbaas);
-
 // allow serving of static files from the public directory
 app.use(express.static(__dirname + '/public'));
 
@@ -84,7 +81,7 @@ fhmbaasMiddleware.init(jsonConfig, function (err) {
     process.exit(1);
   }
 
-  app.use(bodyParser.json());
+  app.use(bodyParser.json({limit: '100mb'}));
   app.use(multer());
   app.use('/api/mbaas', require('./lib/routes/api.js'));
   app.use('/api/app', require('./lib/routes/app.js'));
