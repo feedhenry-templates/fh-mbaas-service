@@ -7,7 +7,7 @@
     "cors": "~2.2.0",
     "express": "^4.4.5",
     "fh-forms": "^1.1.2",
-    "fh-mbaas-api": "5.3.5",
+    "fh-mbaas-api": "5.6.0-201",
     "fh-mbaas-middleware": "^1.0.8",
     "mongodb-uri": "^0.9.7",
     "multer": "0.1.8",
