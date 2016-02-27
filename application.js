@@ -8,16 +8,22 @@ var bodyParser = require('body-parser');
 var bunyan = require('bunyan');
 var mongoUri = require('mongodb-uri');
 var multer = require('multer');
+var fhServiceAuth = require('fh-service-auth');
+var formsUpdater = require('./lib/formsUpdater');
+var log = require('./lib/util/log');
+var logg = log.get();
+var scheduler;
 
-var log = bunyan.createLogger({
+log.set(bunyan.createLogger({
   name: 'fh-mbaas-service',
   streams:[{
-    level: 'info',
+    level: 'debug',
     stream: process.stdout,
     src: true
   }]
-});
-log.info('log created');
+}));
+
+logg.logger.info('log created');
 
 // list the endpoints which you want to make securable here
 var securableEndpoints = [];
@@ -44,7 +50,7 @@ else if (process.env.FH_MONGODB_CONN_URL) {
   mongoUrl = process.env.FH_MONGODB_CONN_URL;
 }
 else {
-  log.error('No environment variable found for mongodb (mongoUrl). Exiting.');
+  logg.logger.error('No environment variable found for mongodb (mongoUrl). Exiting.');
   process.exit(1);
 }
 
@@ -57,7 +63,7 @@ if (!parsedMongoUrl.database) {
   parsedMongoUrl = mongoUri.parse(mongoUrl);
 }
 
-log.info('parsedMongoUrl', parsedMongoUrl);
+logg.logger.info('parsedMongoUrl', parsedMongoUrl);
 // fhlint-begin: custom-routes
 var jsonConfig = {
   mongoUrl: mongoUrl,
@@ -70,7 +76,15 @@ var jsonConfig = {
       pass: parsedMongoUrl.password
     }
   },
-  logger: log
+  logger: logg.logger,
+  agenda: {
+    enabled: true,
+    jobs: {
+      data_source_update: {
+        schedule: "30 seconds"
+      }
+    }
+  }
 };
 
 // models are also initialised in this call
@@ -80,24 +94,35 @@ fhmbaasMiddleware.init(jsonConfig, function (err) {
     console.trace();
     process.exit(1);
   }
+  fhServiceAuth.init({
+        logger: logg.logger
+      }, function(err){
+        if(err){
+          console.error("FATAL: service not started " + util.inspect(err));
+          console.trace();
+          process.exit(1);
+        }
 
-  app.use(bodyParser.json({limit: '100mb'}));
-  app.use(multer());
-  app.use('/api/mbaas', require('./lib/routes/api.js'));
-  app.use('/api/app', require('./lib/routes/app.js'));
-  // Note: moved to allow authorizatiobn to be passed for above mappings
-  app.use(mbaasExpress.fhmiddleware());
+        scheduler = formsUpdater.scheduler(logg.logger, jsonConfig, jsonConfig.mongoUrl);
+
+        app.use(bodyParser.json({limit: '100mb'}));
+        app.use(multer());
+        app.use('/api/mbaas', require('./lib/routes/api.js'));
+        app.use('/api/app', require('./lib/routes/app.js'));
+        // Note: moved to allow authorizatiobn to be passed for above mappings
+        app.use(mbaasExpress.fhmiddleware());
 
 
-  // Important that this is last!
-  app.use(mbaasExpress.errorHandler());
+        // Important that this is last!
+        app.use(mbaasExpress.errorHandler());
 
-  var port = process.env.FH_PORT || process.env.OPENSHIFT_NODEJS_PORT || 8001;
-  var host = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+        var port = process.env.FH_PORT || process.env.OPENSHIFT_NODEJS_PORT || 8001;
+        var host = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 
-  log.info('listen', host, port);
-  app.listen(port, host, function() { // jshint unused:false
-    console.log("App started at: " + new Date() + " on port: " + port);
-  });
+        logg.logger.info('listen', host, port);
+        app.listen(port, host, function() { // jshint unused:false
+          console.log("App started at: " + new Date() + " on port: " + port);
+        });
+      });
 });
 // fhlint-end
