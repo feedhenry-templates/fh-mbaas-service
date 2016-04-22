@@ -7,7 +7,7 @@
     "cors": "~2.2.0",
     "express": "^4.4.5",
     "fh-forms": "1.4.4",
-    "fh-mbaas-api": "5.10.0",
+    "fh-mbaas-api": "5.11.0",
     "fh-mbaas-middleware": "1.2.0-110",
     "mongodb-uri": "^0.9.7",
     "multer": "0.1.8",
@@ -30,7 +30,7 @@
     "grunt-env": "~0.4.1",
     "load-grunt-tasks": "~0.4.0",
     "time-grunt": "~0.3.1",
-    "grunt-node-inspector": "~0.1.5",
+    "grunt-node-inspector": ">=0.2.0",
     "grunt-open": "~0.2.3",
     "grunt-plato": "~1.0.0"
   },
