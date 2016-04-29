@@ -78,7 +78,7 @@ module.exports = function(grunt) {
           stderr: true,
           failOnError: true
         },
-        command: 'env NODE_PATH=. ./node_modules/.bin/mocha -A -u exports --recursive test/unit/'
+        command: 'env NODE_PATH=. ./node_modules/.bin/mocha -A -u exports --recursive test/unit'
       },
       accept: {
         options: {
@@ -134,15 +134,19 @@ module.exports = function(grunt) {
           'plato': ['lib/**/*.js']
         }
       }
+    },
+    jshint: {
+      all: ['lib/**/*.js', 'test/**/*.js']
     }
   });
 
   // Load NPM tasks
   require('load-grunt-tasks')(grunt, {scope: 'devDependencies'});
 
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+
   // Testing tasks
-  grunt.registerTask('test', ['shell:unit', 'shell:accept']);
-  grunt.registerTask('unit', ['shell:unit']);
+  grunt.registerTask('test', ['jshint', 'shell:unit']);
   grunt.registerTask('accept', ['env:local', 'shell:accept']);
 
   // Coverate tasks
