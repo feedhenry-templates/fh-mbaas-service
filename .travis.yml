@@ -8,6 +8,6 @@ node_js:
   - "0.10"
   - "4.4.3"
 before_install:
-  - npm install fh-build -g
+  - npm install fh-build
   - fh-build template
 install: npm install
