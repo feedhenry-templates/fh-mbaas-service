@@ -42,7 +42,7 @@
     "test": "grunt test",
     "debug": "grunt serve",
     "start": "node application.js",
-	"preinstall": "scripts/preinstall.sh"
+    "preinstall": "chmod +x scripts/preinstall.sh && scripts/preinstall.sh"
   },
   "license": "mit"
 }
