@@ -7,6 +7,8 @@ module.exports = {
   mockEnv: "mockenv",
   mockDomain: "mockdomain",
   config: require('./config'),
+  MockReadStream: require('./mock_readStream'),
+  MockWriteStream: require('./mock_writeStream'),
   envConfig: function(){
     return {
       domain: this.mockDomain,
