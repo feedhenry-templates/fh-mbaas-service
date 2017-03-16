@@ -42,6 +42,24 @@ describe("Admin Submissions Router", function(){
         '@global': true,
         core: {
           getSubmissions: getSubmissionsStub
+        },
+        middleware: {
+          forms: {
+            submitFormData: function(){}
+          },
+          submissions: {
+            addSubmissionFile: function(){},
+            completeSubmission: function(){},
+            exportCSV: function(){},
+            generatePDF: function(){},
+            get: function(){},
+            getRequestFileParameters: function(){},
+            getSubmissionFile: function(){},
+            processFileResponse: function(){},
+            remove: function(){},
+            update: function(){},
+            updateSubmissionFile: function(){}
+          }
         }
       },
       '../../../util/log': {
@@ -95,6 +113,24 @@ describe("Admin Submissions Router", function(){
         '@global': true,
         core: {
           submissionSearch: searchSubmissionsStub
+        },
+        middleware: {
+          forms: {
+            submitFormData: function(){}
+          },
+          submissions: {
+            addSubmissionFile: function(){},
+            completeSubmission: function(){},
+            exportCSV: function(){},
+            generatePDF: function(){},
+            get: function(){},
+            getRequestFileParameters: function(){},
+            getSubmissionFile: function(){},
+            processFileResponse: function(){},
+            remove: function(){},
+            update: function(){},
+            updateSubmissionFile: function(){}
+          }
         }
       },
       'fh-config': {
@@ -162,6 +198,24 @@ describe("Admin Submissions Router", function(){
         '@global': true,
         core: {
           getSubmissions: getSubmissionsStub
+        },
+        middleware: {
+          forms: {
+            submitFormData: function(){}
+          },
+          submissions: {
+            addSubmissionFile: function(){},
+            completeSubmission: function(){},
+            exportCSV: function(){},
+            generatePDF: function(){},
+            get: function(){},
+            getRequestFileParameters: function(){},
+            getSubmissionFile: function(){},
+            processFileResponse: function(){},
+            remove: function(){},
+            update: function(){},
+            updateSubmissionFile: function(){}
+          }
         }
       },
       'fh-config': {
