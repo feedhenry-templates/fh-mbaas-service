@@ -2,7 +2,7 @@
   "name": "fh-mbaas-service",
   "version": "0.8.0",
   "dependencies": {
-    "body-parser": "~1.0.2",
+    "body-parser": "~1.17.1",
     "bunyan": "1.8.10",
     "cors": "~2.2.0",
     "express": "^4.4.5",
@@ -11,12 +11,13 @@
     "fh-mbaas-middleware": "2.2.7",
     "express-paginate": "0.2.0",
     "mongodb-uri": "^0.9.7",
-    "multer": "0.1.8",
-    "request": "2.79.0",
+    "multer": "1.0.0",
+    "request": "2.81.0",
     "underscore": "^1.6.0",
     "fh-service-auth": "1.0.3",
     "async": "0.9.2",
-    "fh-agenda": "0.1.0"
+    "fh-agenda": "0.1.0",
+    "snyk": "^1.42.6"
   },
   "devDependencies": {
     "grunt-concurrent": "latest",
@@ -42,7 +43,10 @@
     "test": "grunt test",
     "debug": "grunt serve",
     "coverage": "grunt coverage",
-    "start": "node application.js"
+    "start": "node application.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "snyk": true
 }
