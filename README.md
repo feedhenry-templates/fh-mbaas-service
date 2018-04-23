@@ -1,4 +1,4 @@
-# fh-mbaas-service
+# fh-mbaas-service (DEPRECATED)
 [![Dependency Status](https://img.shields.io/david/feedhenry-templates/fh-mbaas-service.svg?style=flat-square)](https://david-dm.org/feedhenry-templates/fh-mbaas-service)
 
 Feedhenry service to support deployed Apps in an MBaaS e.g. OpenShift
@@ -23,3 +23,6 @@ npm test
 ```
 npm run coverage
 ```
+
+# Deprecation
+The support for the 2.X, V2, OpenShift version is not so long supported by RHMAP. The current version supported is 3.X, V3. 
