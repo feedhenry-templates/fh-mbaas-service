@@ -1,0 +1,60 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.7.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:debug:20170905':
+    - fh-mbaas-api > fh-mbaas-express > body-parser > debug:
+        patched: '2017-10-11T14:39:32.635Z'
+    - fh-mbaas-api > debug:
+        patched: '2017-10-11T14:39:32.635Z'
+    - fh-mbaas-middleware > mongoose > mquery > debug:
+        patched: '2017-10-11T14:39:32.635Z'
+    - fh-forms > phantom > phantomjs-prebuilt > extract-zip > debug:
+        patched: '2017-10-11T14:39:32.635Z'
+    - fh-service-auth > mongoose > mquery > debug:
+        patched: '2017-10-11T14:39:32.635Z'
+    - fh-forms > mongoose > mquery > debug:
+        patched: '2017-10-11T14:39:32.635Z'
+    - fh-mbaas-api > fh-mbaas-express > express > debug:
+        patched: '2017-10-11T14:39:32.635Z'
+    - fh-mbaas-api > fh-mbaas-express > express > send > debug:
+        patched: '2017-10-11T14:39:32.635Z'
+    - fh-mbaas-api > fh-mbaas-express > express > serve-static > send > debug:
+        patched: '2017-10-11T14:39:32.635Z'
+    - fh-mbaas-api > fh-sync > debug:
+        patched: '2017-10-11T14:39:32.635Z'
+  'npm:moment:20161019':
+    - fh-forms > moment:
+        patched: '2017-10-11T14:39:32.635Z'
+  'npm:ms:20170412':
+    - fh-forms > mongoose > ms:
+        patched: '2017-10-11T14:39:32.635Z'
+    - fh-mbaas-middleware > mongoose > ms:
+        patched: '2017-10-11T14:39:32.635Z'
+    - fh-mbaas-api > fh-mbaas-express > express > serve-static > send > ms:
+        patched: '2017-10-11T14:39:32.635Z'
+    - fh-forms > mongoose > mquery > debug > ms:
+        patched: '2017-10-11T14:39:32.635Z'
+    - fh-mbaas-middleware > mongoose > mquery > debug > ms:
+        patched: '2017-10-11T14:39:32.635Z'
+    - fh-forms > phantom > phantomjs-prebuilt > extract-zip > debug > ms:
+        patched: '2017-10-11T14:39:32.635Z'
+    - fh-service-auth > mongoose > mquery > debug > ms:
+        patched: '2017-10-11T14:39:32.635Z'
+    - fh-mbaas-api > debug > ms:
+        patched: '2017-10-11T14:39:32.635Z'
+    - fh-mbaas-api > fh-sync > debug > ms:
+        patched: '2017-10-11T14:39:32.635Z'
+    - fh-mbaas-api > fh-mbaas-express > body-parser > debug > ms:
+        patched: '2017-10-11T14:39:32.635Z'
+    - fh-mbaas-api > fh-mbaas-express > express > debug > ms:
+        patched: '2017-10-11T14:39:32.635Z'
+    - fh-mbaas-api > fh-mbaas-express > express > send > debug > ms:
+        patched: '2017-10-11T14:39:32.635Z'
+    - fh-mbaas-api > fh-mbaas-express > express > serve-static > send > debug > ms:
+        patched: '2017-10-11T14:39:32.635Z'
+    - fh-mbaas-api > fh-mbaas-express > express > send > ms:
+        patched: '2017-10-11T14:39:32.635Z'
+    - fh-service-auth > mongoose > ms:
+        patched: '2017-10-11T14:39:32.635Z'
